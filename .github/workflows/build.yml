@@ -1,0 +1,26 @@
+name: Build
+on:
+  push:
+    branches: 
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: 0401_db
+          tags: latest
+          enableBuildKit: true
+          buildArgs: DBNAME=db, DBUSER=app, DBPASS=pass
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+   
+
+      

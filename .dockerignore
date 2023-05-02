@@ -1,0 +1,4 @@
+.git*
+Dockerfile
+.dockerigrnore
+*.md
